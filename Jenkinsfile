@@ -30,5 +30,26 @@ pipeline
                 }                
             }
         }
+        stage ('create a war file')
+        {
+            steps 
+            {
+                withAnt(installation: 'localant', jdk: 'localjdk-8') 
+                {
+                    sh 'ant war'
+                }                
+            }
+        } 
+        stage ('creat a ear file')
+        {
+            steps 
+            {
+                withAnt(installation: 'localant', jdk: 'localjdk-8') 
+                {
+                    sh 'ant ear'
+                }                
+            }
+        }
+
     }
 }

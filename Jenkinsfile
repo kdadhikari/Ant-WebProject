@@ -20,5 +20,15 @@ pipeline
                 }                
             }
         }
+        stage ('compile the code')
+        {
+            steps 
+            {
+                withAnt(installation: 'localant', jdk: 'localjdk-8') 
+                {
+                    sh 'ant compile'
+                }                
+            }
+        }
     }
 }

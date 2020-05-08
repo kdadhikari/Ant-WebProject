@@ -3,16 +3,16 @@ pipeline
     agent any
     stages
     {
-        stage
+        stage ('scm checkout')
         {
-            steps ('scm checkout')
+            steps 
             {
                 git branch: 'master', url: 'https://github.com/kdadhikari/Ant-WebProject'
             }
         }
-        stage
+        stage ('create working dir')
         {
-            steps ('create working dir')
+            steps 
             {
                 withAnt(installation: 'localant', jdk: 'localjdk-8') 
                 {
@@ -21,5 +21,4 @@ pipeline
             }
         }
     }
-
 }
